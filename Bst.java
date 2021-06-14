@@ -1,4 +1,3 @@
-import java.nio.file.Path;
 import java.util.*;
 
 public class Bst {
@@ -11,6 +10,33 @@ public class Bst {
         TreeNode(int val) {
             this.val = val;
         }
+    }
+
+    public static int MaximumInBST(TreeNode root){
+        TreeNode curr=root;
+        while(curr!=null){
+            curr=curr.right;
+        }
+        return curr.val;
+    }
+
+    public static int MinimumInBST(TreeNode root){
+        TreeNode curr=root;
+        while(curr!=null){
+            curr=curr.left;
+        }
+        return curr.val;
+    }
+    
+    public static boolean Find(TreeNode root,int data){
+        TreeNode curr=root;
+
+        while(curr!=null){
+            if(root.val==data) return true;
+            else if(root.val>data) curr=curr.left;
+            else curr=curr.right;
+        }
+        return false;
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -50,9 +76,11 @@ public class Bst {
             }
         }
 
-        if(!flag){
+        if(!flag){// if we haven't find our data then Path is of no use 
             Path.clear();
         }
         return Path;
     }
+
+    
 }
